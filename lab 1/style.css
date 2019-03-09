@@ -1,0 +1,56 @@
+body {
+	padding: 0;
+	background-color: #ffffff;
+	font-family: "ProximaNova", Arial, sans-serif;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 1.45;
+}
+
+.green-line {
+	background-color: #00ca67;
+	max-height: 50px;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+	.green-line {
+		padding: 0 20px;
+		}
+	}
+
+@media (max-width: 767px) {
+	.green-line {
+		padding: 0 20px;
+	}
+}
+
+.menu {
+	width: 100%;
+	background: #29323b;
+	opacity: 0.93;
+	padding: 0;
+}
+
+.promo {
+	background-color: rgba(41, 50, 59, 0.93);
+	background: url("background.jpg") center bottom;
+	background-size: cover;
+	min-height: 514px;
+}
+
+@media (max-width: 767px) {
+	.promo {
+		padding-top: 100px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+	.promo {
+		padding-top: 100px;
+	}
+}
+
+.about {
+	padding-bottom: 50px;
+	background-color: #F7F7F7;
+}
