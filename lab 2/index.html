@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <title>StadiumFacts</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div id="home" class="content bg home parallax1">
-        <div class="position-relative overflow-hidden p-3 p-md-5 text-center bg-light">
-            <h1>StadiumFacts</h1>
-            <p>Open Source Enterprise Data Platform</p>
-            <a href="#aboutus" data-click="scroll-to-target" class="btn btn-outline-secondary">Learn more</a>
-            <a href="#contactus" data-click="scroll-to-target" class="btn btn-outline-secondary">Contact Us</a><br>
-        </div>
+    <div>
+            <div class="position-relative overflow-hidden p-3 p-md-5 text-center bg-light header">
+                    <h1 class="text-light"><span class="text-success">Stadium</span>Facts</h1>
+                    <p class="text-light">Open Source Enterprise Data Platform</p>
+                    <a href="#aboutus" data-click="scroll-to-target" class="btn btn-light btn-outline-secondary">Learn more</a>
+                    <a href="#contactus" data-click="scroll-to-target" class="btn btn-light btn-outline-secondary">Contact Us</a>
+            </div>
     </div>
 
-    <div class="content about text-center p-3 p-md-5 m-md-3">
+    <div class="text-center p-3 p-md-5 m-md-3">
                 <p>
                     We are a keen team of professionals working and integrating complex information systems for over 20 years.
                 </p>
@@ -75,7 +76,7 @@
 
     </div>
 
-    <div class="content about text-center p-3 p-md-5 m-md-3" id="aboutus">
+    <div class="text-center p-3 p-md-5 m-md-3" id="aboutus">
             <div class="row">
                 <div class="position-relative overflow-hidden col-lg-12 p-md-5">
                     <h2 class="tm-welcome-text">Products</h2>
@@ -104,16 +105,19 @@
         <form action="#contactus" method="post" class="tm-contact-form" id="contactus">
             <div class="row">
                 <div class="form-group col-xl-6">
-                    <input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Name..." required="">
+                    <input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Name*" required="">
                 </div>
                 <div class="form-group col-xl-6">
-                    <input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Email..." required="">
+                    <input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Email*" required="">
+                </div>
+                 <div class="form-group col-xl-6">
+                    <input type="phone" id="phone_number" name="phone_number" class="form-control" placeholder="Phone number*" required="">
                 </div>
             </div>
             <div class="form-group">
-                <textarea id="contact_message" name="contact_message" class="form-control" rows="6" placeholder="Your Message..." required=""></textarea>
+                <textarea id="contact_message" name="contact_message" class="form-control" rows="6" placeholder="Comments/Questions" required=""></textarea>
             </div>
-            <button type="submit" class="btn btn-outline-secondary">Send It</button>
+            <button type="submit" class="btn btn-success">Send It</button>
         </form>
     </div>
     <script type="text/javascript" src='js/bootstrap.bundle.js'></script>

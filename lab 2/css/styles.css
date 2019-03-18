@@ -1,0 +1,9 @@
+.header {
+	height: 10vh;
+	min-height: 500px;
+	background-image: linear-gradient(rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 100%), url('../background.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	}
