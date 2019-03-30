@@ -15,6 +15,30 @@ canvas.setAttribute("width", "" + CANVAS_WIDTH);
 canvas.setAttribute("height", "" + CANVAS_HEIGHT);
 body.appendChild(canvas);
 
+
+var br = document.createElement("br");
+body.appendChild(br);
+
+var generateText = document.createElement("p");
+generateText.innerText = "Generate";
+var generateButton = document.createElement("button");
+generateButton.setAttribute("onclick", "generatePic()");
+generateButton.setAttribute("style", "margin-right: 15px");
+generateButton.appendChild(generateText);
+body.appendChild(generateButton);
+
+var saveText = document.createElement("p");
+saveText.innerText = "Save";
+var saveButton = document.createElement("button");
+saveButton.appendChild(saveText);
+var saveButtonContainer = document.createElement("a");
+saveButtonContainer.setAttribute("id", "img-download");
+saveButtonContainer.setAttribute("download", "quote.png");
+
+saveButtonContainer.appendChild(saveButton);
+body.appendChild(saveButtonContainer);
+
+
 var ctx = canvas.getContext("2d");
 
 function randomInt() {
@@ -31,6 +55,7 @@ function insertText() {
             ctx.fillText(lines[i], CANVAS_WIDTH / 2,
                 start + ((i + 1) * (letterHeight + space)));
         }
+        saveButtonContainer.href = canvas.toDataURL("image/png");
     }
 }
 
@@ -88,7 +113,7 @@ function fetchText(callback) {
 }
 
 function drawImgs() {
-    for (var i = 0; i < 4; i++){
+    for (var i = 0; i < 4; i++) {
         ctx.drawImage(imgs[i], i % 2 * IMG_WIDTH, Math.floor((i + 1) / 3) * IMG_HEIGHT, IMG_WIDTH, IMG_HEIGHT);
     }
     imgsReady = true;
@@ -110,10 +135,17 @@ function fetchImgs() {
             drawImgs();
         }
     };
+    imgs[imgsRecieved - 1].setAttribute("crossOrigin", "Anonymous");
     imgs[imgsRecieved - 1].src = "https://source.unsplash.com/collection/" + randomInt();
 }
 
 function generatePic() {
+    imgs = [];
+    imgsReady = false;
+    imgsRecieved = 0;
+    textFetched = false;
+    fetchedQuote = null;
+    lines = [];
     fetchImgs();
     fetchText(splitText);
 }
