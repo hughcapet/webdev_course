@@ -73,7 +73,7 @@ function splitText() {
     var words = bareText.split(" ");
     var currentLine = words[0];
     ctx.textAlign = "center";
-    ctx.font = "15px Helvetica";
+    ctx.font = "20px Helvetica";
     ctx.fillStyle = "white";
     for (var i = 1; i < words.length; i++) {
         var word = words[i];
@@ -114,8 +114,10 @@ function fetchText(callback) {
 
 function drawImgs() {
     for (var i = 0; i < 4; i++) {
+        ctx.globalAlpha = 0.7;
         ctx.drawImage(imgs[i], i % 2 * IMG_WIDTH, Math.floor((i + 1) / 3) * IMG_HEIGHT, IMG_WIDTH, IMG_HEIGHT);
     }
+    ctx.globalAlpha = 1.0;
     imgsReady = true;
     insertText();
 }
@@ -140,6 +142,7 @@ function fetchImgs() {
 }
 
 function generatePic() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     imgs = [];
     imgsReady = false;
     imgsRecieved = 0;
