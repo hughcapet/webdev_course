@@ -1,3 +1,5 @@
+<?php include "./templates/include/header.php" ?>
+
 <ul id="headlines">
  
 <?php foreach ($results['articles'] as $article) { ?>
@@ -18,3 +20,5 @@
 </ul>
 
 <p><a href="./?action=archive">Article Archive</a></p>
+
+<?php include "./templates/include/footer.php" ?>

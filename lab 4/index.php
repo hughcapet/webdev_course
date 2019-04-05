@@ -12,7 +12,7 @@ switch ($action) {
 		break;
 	default:
     	homepage();
-}
+    }
 
 /*
 List all articles
@@ -49,7 +49,7 @@ function homepage() {
 	$data = Article::getList(HOMEPAGE_NUM_ARTICLES);
 	$results['articles'] = $data['results'];
 	$results['totalRows'] = $data['totalRows'];
-	$results['pageTitle'] = "Widget News";
+	$results['pageTitle'] = "News";
 	require(TEMPLATE_PATH . "/homepage.php");
 }
 

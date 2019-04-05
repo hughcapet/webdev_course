@@ -1,6 +1,6 @@
 <?php include "templates/include/header.php" ?>
 <h1>
-	<?php echo htmlspecialchars( $results['article']->title )?>
+	<?php echo htmlspecialchars($results['article']->title)?>
 </h1>
 <div>
 	<?php echo $results['article']->content?>

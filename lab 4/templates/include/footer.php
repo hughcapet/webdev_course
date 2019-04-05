@@ -1,5 +1,6 @@
-      <div id="footer">
-      </div>
-    </div>
-  </body>
+		<div id="footer">
+			<a href="admin.php">admin panel</a>
+		</div>
+	</div>
+	</body>
 </html>
