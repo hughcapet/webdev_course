@@ -26,7 +26,7 @@ function newArticle() {
 	$results['formAction'] = "newArticle";
 	if (isset($_POST['saveChanges'])) {
 		$article = new Article;
-		$article->storeFormValues($_POST);
+		$article->storeFromValues($_POST);
 		$article->insert();
 		header("Location: admin.php?status=changesSaved");
 	} elseif (isset($_POST['cancel'])) {
@@ -49,7 +49,7 @@ function editArticle() {
 			header("Location: admin.php?error=articleNotFound");
 			return;
 		}
-		$article->storeFormValues($_POST);
+		$article->storeFromValues($_POST);
 		$article->update();
 		header("Location: admin.php?status=changesSaved");
 	} elseif (isset($_POST['cancel'])) {
