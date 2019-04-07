@@ -1,8 +1,9 @@
-var imgs = [];
+var fetchedImgs = [];
+var imgsToDraw = [];
 var imgsReady = false;
 var imgsRecieved = 0;
-var textFetched = false;
-var fetchedQuote = null;
+var textReady = false;
+var textToDraw = null;
 var lines = [];
 
 var IMG_WIDTH = 200, IMG_HEIGHT = 200;
@@ -46,11 +47,12 @@ function randomInt() {
 }
 
 function insertText() {
-    if (imgsReady && textFetched) {
+    if (imgsReady && textReady) {
         var space = 10;
         var letterHeight = parseInt("10px", 0);
         var countLines = lines.length;
         var start = CANVAS_HEIGHT / 2 - (letterHeight + space) * countLines / 2;
+        ctx.fillStyle = "white";
         for (var i = 0; i < lines.length; i++) {
             ctx.fillText(lines[i], CANVAS_WIDTH / 2,
                 start + ((i + 1) * (letterHeight + space)));
@@ -66,7 +68,7 @@ function clearText(rawText) {
 }
 
 function splitText() {
-    var text = JSON.parse(fetchedQuote)[0].content;
+    var text = JSON.parse(textToDraw)[0].content;
     var bareText = clearText(text);
 
     var padding = 10;
@@ -88,7 +90,7 @@ function splitText() {
         }
     }
     lines.push(currentLine);
-    textFetched = true;
+    textReady = true;
 }
 
 function fetchText(callback) {
@@ -99,7 +101,7 @@ function fetchText(callback) {
             if (xhr.status !== 200) {
                 alert(xhr.status + ': ' + xhr.responseText);
             } else {
-                fetchedQuote = xhr.responseText;
+                textToDraw = xhr.responseText;
                 callback();
             }
         }
@@ -113,9 +115,11 @@ function fetchText(callback) {
 }
 
 function drawImgs() {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     for (var i = 0; i < 4; i++) {
-        ctx.globalAlpha = 0.7;
-        ctx.drawImage(imgs[i], i % 2 * IMG_WIDTH, Math.floor((i + 1) / 3) * IMG_HEIGHT, IMG_WIDTH, IMG_HEIGHT);
+        ctx.globalAlpha = 0.65;
+        ctx.drawImage(imgsToDraw[i], i % 2 * IMG_WIDTH, Math.floor((i + 1) / 3) * IMG_HEIGHT, IMG_WIDTH, IMG_HEIGHT);
     }
     ctx.globalAlpha = 1.0;
     imgsReady = true;
@@ -124,30 +128,34 @@ function drawImgs() {
 
 function fetchImgs() {
     imgsRecieved++;
-    imgs.push(new Image());
-    imgs[imgsRecieved - 1].onerror = function() {
+    var newImg = new Image();
+    newImg.setAttribute("crossOrigin", "Anonymous");
+    newImg.src = "https://source.unsplash.com/collection/" + randomInt();
+
+    newImg.onerror = function() {
         console.log("failed to fetch an image");
         fetchImgs();
     };
-    imgs[imgsRecieved - 1].onload = function() {
-        if (imgs.length < 4) {
+    newImg.onload = function() {
+        fetchedImgs.push(newImg);
+        if (fetchedImgs.length < 4) {
             fetchImgs();
         }
         else {
+            imgsToDraw = fetchedImgs;
             drawImgs();
         }
     };
-    imgs[imgsRecieved - 1].setAttribute("crossOrigin", "Anonymous");
-    imgs[imgsRecieved - 1].src = "https://source.unsplash.com/collection/" + randomInt();
 }
 
 function generatePic() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    imgs = [];
+    imgsToDraw = [];
+    fetchedImgs = [];
     imgsReady = false;
     imgsRecieved = 0;
-    textFetched = false;
-    fetchedQuote = null;
+    textReady = false;
+    textToDraw = null;
     lines = [];
     fetchImgs();
     fetchText(splitText);
