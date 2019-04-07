@@ -1,7 +1,7 @@
 <?php include "templates/include/header.php" ?>
 <h1>Article Archive</h1>
 
-<ul id="headlines" class="archive">
+<ul>
 
   <?php foreach ($results['articles'] as $article) { ?>
 
@@ -15,5 +15,6 @@
             </a>
         </h2>
     </li>
+</ul>
    
     <?php } ?>

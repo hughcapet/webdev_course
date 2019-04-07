@@ -32,7 +32,7 @@
 </form>
 
 <?php if ($results['article']->id) { ?>
-      <a href="admin.php?action=deleteArticle&amp;articleId=<?php echo $results['article']->id ?>" onclick="return confirm('Delete This Article?')"><button>Delete</button></a>
+      <a href="admin.php?action=deleteArticle&amp;articleId=<?php echo $results['article']->id ?>" onclick="return confirm('Delete This Article?')"><button class="delete">Delete</button></a>
 <?php } ?>
 
 <?php include "templates/include/footer.php" ?>
