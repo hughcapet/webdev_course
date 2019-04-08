@@ -1,7 +1,7 @@
 <?php include "templates/include/header.php" ?>
 <h1>Article Archive</h1>
 
-<ul>
+<ul id="headlines">
 
   <?php foreach ($results['articles'] as $article) { ?>
 
@@ -15,6 +15,9 @@
             </a>
         </h2>
     </li>
+        <?php } ?>
 </ul>
    
-    <?php } ?>
+
+
+<p><?php echo $results['totalRows']?> article<?php echo ( $results['totalRows'] != 1 ) ? 's' : '' ?> in total.</p>

@@ -20,7 +20,7 @@
         </li>
         <li>
             <label for="publicationDate">Publication Date</label>
-            <input type="date" name="publicationDate" id="publicationDate" placeholder="YYYY-MM-DD" required maxlength="10" value="<?php echo $results['article']->publicationDate ? date( "Y-m-d", $results['article']->publicationDate ) : date("Y-m-d", time()) ?>" >
+            <input type="date" name="publicationDate" id="publicationDate" placeholder="YYYY-MM-DD" required maxlength="10" value="<?php echo $results['article']->publicationDate ? date("Y-m-d", $results['article']->publicationDate) : date("Y-m-d", time()); ?>" >
         </li>
     </ul>
 

@@ -20,7 +20,7 @@ class Article {
 		if (isset($params['publicationDate'])) {
 			$publicationDate = explode('-', $params['publicationDate']);
 			list($y, $m, $d) = $publicationDate;
-			$this->publicationDate = mktime(0, 0, 0, $m, $d, $y);
+			$this->publicationDate = mktime(0, 0, 0, $m, $d + 1, $y);
 		}
 	}
 

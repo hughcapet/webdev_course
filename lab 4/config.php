@@ -1,7 +1,7 @@
 <?php
 ini_set("display_errors", true);
 date_default_timezone_set("Europe/Moscow");
-define("DB_DSN", "mysql:host=localhost;dbname=news");
+define("DB_DSN", "mysql:host=localhost;dbname=lab4");
 define("DB_USERNAME", "root");
 define("DB_PASSWORD", "");
 define("CLASS_PATH", "classes");
