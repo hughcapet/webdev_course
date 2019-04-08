@@ -1,7 +1,6 @@
 var fetchedImgs = [];
 var imgsToDraw = [];
 var imgsReady = false;
-var imgsRecieved = 0;
 var textReady = false;
 var textToDraw = null;
 var lines = [];
@@ -127,7 +126,6 @@ function drawImgs() {
 }
 
 function fetchImgs() {
-    imgsRecieved++;
     var newImg = new Image();
     newImg.setAttribute("crossOrigin", "Anonymous");
     newImg.src = "https://source.unsplash.com/collection/" + randomInt();
@@ -153,7 +151,6 @@ function generatePic() {
     imgsToDraw = [];
     fetchedImgs = [];
     imgsReady = false;
-    imgsRecieved = 0;
     textReady = false;
     textToDraw = null;
     lines = [];
