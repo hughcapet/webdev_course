@@ -15,7 +15,7 @@
             </div>
             <div class="col-md-6 col-sm-12">
                 <h1 class="light">Preview</h1>
-                <div class="info">{{markdown}}</div>
+                <div class="info" v-html="compiledMarkdown"></div>
             </div>
         </div>
     </div>
@@ -23,14 +23,23 @@
 </template>
 
 <script>
+    import marked from 'marked';
+
     export default {
         name: 'Markdown',
         data() {
             return {
                 markdown: ''
             }
+        },
+        computed: {
+            compiledMarkdown: function () {
+                return marked(this.markdown, {sanitize: true})
+            }
         }
-    }
+    };
+
+
 </script>
 
 <style>
