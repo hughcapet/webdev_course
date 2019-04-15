@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row mt-4">
             <div class="col text-center">
-                <h1 class="light">New draft</h1>
+                <h1 class="light">Draft</h1>
             </div>
         </div>
 
@@ -17,7 +17,12 @@
                 <h1 class="light">Preview</h1>
                 <div class="info" v-html="compiledMarkdown"></div>
             </div>
+            <div class="col-md-6 mt-4">
+                <button class="mr-2">save</button>
+                <button>delete</button>
+            </div>
         </div>
+
     </div>
 
 </template>
