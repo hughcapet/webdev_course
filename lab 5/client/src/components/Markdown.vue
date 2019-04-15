@@ -1,20 +1,26 @@
 <template>
 
     <div class="container">
+
         <div class="row mt-4">
             <div class="col text-center">
                 <h1 class="light">Draft</h1>
             </div>
         </div>
 
+        <div class="row mt-5">
+            <h3 class="col light">Title</h3>
+        </div>
+            <input class="col-md-4" type="text" name="title">
+
         <div class="row mt-4">
             <div class="col-md-6 col-sm-12">
-                <h1 class="light">Markdown</h1>
+                <h2 class="light">Markdown</h2>
                 <textarea class="info"
                         v-model="markdown"/>
             </div>
             <div class="col-md-6 col-sm-12">
-                <h1 class="light">Preview</h1>
+                <h2 class="light">Preview</h2>
                 <div class="info" v-html="compiledMarkdown"></div>
             </div>
             <div class="col-md-6 mt-4">
