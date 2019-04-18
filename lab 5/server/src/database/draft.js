@@ -7,4 +7,4 @@ let Draft = new Schema({
     markdown: String
 });
 
-module.exports.Draft = Draft;
+module.exports.Draft = mongoose.model("Draft", Draft);

@@ -1,19 +1,45 @@
 const { Draft } = require("../database/draft");
 
-module.exports.showDrafts = function(req, res) {
-    res.json({ result: "Return all drafts" });
+module.exports.showDrafts = async function(req, res) {
+    const drafts = await Draft.find();
+    res.json({ drafts });
 };
 
-module.exports.createDraft = function(req, res) {
-    res.json({ result: "Create new drafts" });
+module.exports.createDraft = async function(req, res) {
+    const { title, markdown } = req.body;
+    console.log(req.body);
+
+    if (!title || !markdown) {
+        return res.json({ error: "Got an empty title or markdown field" });
+    }
+    const newDraft = new Draft({
+        title,
+        markdown
+    });
+
+    const savedDraft = await newDraft.save();
+
+    res.json({ result: "Success", savedDraft});
 };
 
-module.exports.editDraft = function(req, res) {
+module.exports.editDraft = async function(req, res) {
     const id = req.params.id;
-    res.json({ result: "Edit draft " + id});
+    const { title, markdown } = req.body;
+
+    if (!title || !markdown) {
+        return res.json({ error: "Got an empty title or markdown field" });
+    }
+    const toUpdate = {
+        title,
+        markdown
+    };
+    const updatedDraft = await Draft.findByIdAndUpdate(id, toUpdate, { new: true });
+
+    res.json({ result: "Success ", updatedDraft });
 };
 
-module.exports.deleteDraft = function(req, res) {
+module.exports.deleteDraft = async function(req, res) {
     const id = req.params.id;
-    res.json({ result: "Delete draft " + id});
-}
+    const deleted = await Draft.findByIdAndDelete(id);
+    res.json({ result: "Success", deleted: deleted});
+};
