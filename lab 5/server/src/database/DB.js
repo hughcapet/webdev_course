@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const credentials = require('./credentials');
 
 mongoose.connect(
-    `mongodb+srv://${credentials.user}:${credentials.password}@bungina-jwl9m.mongodb.net/markdown?retryWrites=true"`,
+    `mongodb+srv://${credentials.user}:${credentials.password}@${credentials.address}?retryWrites=true"`,
     { useNewUrlParser: true }
 );
 
