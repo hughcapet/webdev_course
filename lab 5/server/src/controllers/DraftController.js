@@ -17,9 +17,9 @@ module.exports.createDraft = async function(req, res) {
         markdown
     });
 
-    const savedDraft = await newDraft.save();
+    const createdDraft = await newDraft.save();
 
-    res.json({ result: "Success", savedDraft});
+    res.json({ result: "Success", createdDraft: createdDraft});
 };
 
 module.exports.editDraft = async function(req, res) {

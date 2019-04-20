@@ -45,7 +45,8 @@
           title: "Untitled",
           markdown: "Your text"
         });
-        this.draftsList.push(res.data.savedDraft);
+        this.draftsList.push(res.data.createdDraft);
+        this.draftToShow = res.data.createdDraft;
       },
 
       async updateDraft(draft) {

@@ -16,7 +16,6 @@
 
 
 <script>
-
     export default {
         name: "AllDrafts",
         props: ["draftsList", "showDraft", "createDraft"],
