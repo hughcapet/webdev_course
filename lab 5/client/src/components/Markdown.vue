@@ -1,14 +1,13 @@
 <template>
 
     <div class="container">
-
-        <div class="row mt-4">
+        <div class="row mt-3">
             <div class="col text-center">
                 <h1 class="light">Draft</h1>
             </div>
         </div>
 
-        <div class="row mt-5">
+        <div class="row mt-2">
             <h3 class="col light">Title</h3>
         </div>
             <input :value="currentTitle" @input="updateTitle" class="col-md-4" type="text" name="title">
@@ -16,16 +15,15 @@
         <div class="row mt-4">
             <div class="col-md-6 col-sm-12">
                 <h2 class="light">Markdown</h2>
-                <textarea :value="currentMD" @input="updateMD" class="info"
-                        />
+                <textarea :value="currentMD" @input="updateMD" class="info"></textarea>
             </div>
             <div class="col-md-6 col-sm-12">
                 <h2 class="light">Preview</h2>
                 <div class="info" v-html="compiledMarkdown"></div>
             </div>
-            <div class="col-md-6 mt-4">
-                <button v-on:click="saveDraft(draftJSON)" class="mr-2">save</button>
-                <button v-on:click="deleteDraft(draftJSON)">delete</button>
+            <div class="col-md-6 mt-4 mb-3">
+                <button v-on:click="saveDraft(draftJSON)" class="mr-2 btn btn-outline-dark">save</button>
+                <button v-on:click="deleteDraft(draftJSON)" class="btn btn-outline-dark">delete</button>
             </div>
         </div>
 
@@ -89,15 +87,17 @@
 
 </script>
 
-<style>
+<style scoped>
+    textarea {
+        resize: none;
+        outline: none;
+        border: none;
+    }
     .light {
         color: white;
         text-shadow: 1px 1px 5px rgba(150, 150, 150, 0.9);
     }
-    textarea {
-        resize: none;
-        outline: none;
-    }
+
 
     .info {
         height: 400px;
